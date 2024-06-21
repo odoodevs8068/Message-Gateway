@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_nexmo_api_form_inherit" model="ir.ui.view">
+        <field name="name">Nexmo API</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]/div[hasclass('app_settings_block')]/div[@id = 'languages']" position="after">
+                <h2>Message Gateway Credentials</h2>
+                    <div class="row mt16 o_settings_container" name="nexmo_api">
+                        <div class="col-12 col-lg-6 o_setting_box" id="gateway">
+                            <div class="o_setting_right_pane">
+                                <label for="gateway"/>
+                                <field name="gateway" style="max-width : 40%; margin-left:5px"/>
+                                <div class="mt8">
+                                    <button name="button_view_sms_history" icon="fa-arrow-right" type="object"
+                                            string="SMS History" class="btn-link"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box" id="api_key">
+                            <div class="o_setting_right_pane" attrs="{'invisible' : [('gateway', '!=', 'nexmo')]}">
+                                <label for="api_key"/>
+                                <field name="api_key" password="True" style="max-width : 70%; margin-left:25px"/>
+                                <br/>
+                                <label for="api_secret" />
+                                <field name="api_secret"  password="True" style="max-width : 70%;margin-left:10px"/>
+                                <br/>
+                                <label for="sender_no"/>
+                                <field name="sender_no" style="max-width : 70%;margin-left:5px"/>
+                            </div>
+
+                            <div class="o_setting_right_pane" attrs="{'invisible' : [('gateway', '!=', 'twilio')]}">
+                                <label for="account_sid"/>
+                                <field name="account_sid" password="True" style="max-width : 70%; margin-left:7px"/>
+                                <br/>
+                                <label for="auth_token"/>
+                                <field name="auth_token" password="True" style="max-width : 70%;margin-left:10px"/>
+                                <br/>
+                                <label for="twilio_no"/>
+                                <field name="twilio_no" style="max-width : 70%;margin-left:20px"/>
+                            </div>
+
+                            <div class="o_setting_right_pane" attrs="{'invisible' : [('gateway', '!=', 'clicksendsms')]}">
+                                <label for="clicksend_username"/>
+                                <field name="clicksend_username" style="max-width : 70%; margin-left:17px"/>
+                                <br/>
+                                <label for="click_send_api_key" />
+                                <field name="click_send_api_key"  password="True"
+                                       style="max-width : 70%;margin-left:33px"/>
+                                <br/>
+                                <label for="click_send_sender_no"/>
+                                <field name="click_send_sender_no" style="max-width : 70%;margin-left:10px"/>
+                            </div>
+                        </div>
+                    </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

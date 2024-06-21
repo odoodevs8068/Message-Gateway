@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="sms_history_form_view" model="ir.ui.view">
+            <field name="name">SMS History</field>
+            <field name="model">sms.history</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="3">
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="gateway"/>
+                            </group>
+                            <group>
+                                <field name="from_no"/>
+                                <field name="to_no"/>
+                            </group>
+                            <group>
+                                <field name="message"/>
+                                <field name="datetime"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sms_history_tree_view" model="ir.ui.view">
+            <field name="name">SMS History</field>
+            <field name="model">sms.history</field>
+            <field name="arch" type="xml">
+                <tree create="0">
+                    <field name="partner_id"/>
+                    <field name="gateway"/>
+                    <field name="from_no"/>
+                    <field name="to_no"/>
+                    <field name="message"/>
+                    <field name="datetime"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_sms_history" model="ir.actions.act_window">
+            <field name="name">SMS History</field>
+            <field name="res_model">sms.history</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="sms_history_tree_view"/>
+            <field name="context">{'create': False, 'edit': False}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Custom Breadcrumbs!
+                </p>
+            </field>
+        </record>
+</odoo>

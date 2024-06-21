@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="send_message_wizard_form_view" model="ir.ui.view">
+            <field name="name">Message Wizard</field>
+            <field name="model">message.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="2">
+                            <group>
+                                <field name="partner_id" options="{'no_edit': True, 'no_create': True, 'no_open': True, 'no_quick_create': True}" required="True"/>
+                            </group>
+                            <group>
+                                <field name="mobile" required="True"/>
+                                <label for="gateway"/>
+                                <div class="o_row" name="minimum">
+                                    <field name="gateway" required="1"/>
+                                    <field name="channel" required="1"/>
+                                </div>
+                            </group>
+                        </group>
+                        <group col="2">
+                            <field name="message" widget="html"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="button_send_sms" string="Send Message" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="button_cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

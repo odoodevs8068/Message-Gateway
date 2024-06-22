@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_nexmo_api_form_inherit" model="ir.ui.view">
+        <field name="name">Nexmo API</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id = 'languages']" position="after">
+                  <div id="message_gateway">
+                            <block title="Message Gateway" name="message_gateway_settings">
+                                <setting id="message_gateway">
+                                    <div class="row mt16">
+                                        <label for="gateway" string="Gateway" class="col-lg-3"/>
+                                        <field name="gateway" style="margin-left: -55px; max-width: 40%;"/>
+                                    </div>
+
+                                    <div class="mt8">
+                                        <button name="button_view_sms_history" icon="oi-arrow-right" type="object" string="SMS History" class="btn-link"/>
+                                    </div>
+                                </setting>
+
+                                <setting id="nexmo_credentials" invisible="gateway != 'nexmo'">
+                                    <div class="row mt16">
+                                        <label for="api_key" string="API Key" class="col-lg-3"/>
+                                        <field name="api_key" password="True"/>
+                                    </div>
+                                    <div class="row mt16">
+                                        <label for="api_secret" string="API Secret" class="col-lg-3"/>
+                                        <field name="api_secret" password="True"/>
+                                    </div>
+                                    <div class="row mt16">
+                                        <label for="sender_no" string="Sender No." class="col-lg-3"/>
+                                        <field name="sender_no"/>
+                                    </div>
+                                </setting>
+
+                                <setting id="twilio_credentials" invisible="gateway != 'twilio'">
+                                    <div class="row mt16">
+                                        <label for="account_sid" string="Account SID" class="col-lg-3"/>
+                                        <field name="account_sid" password="True"/>
+                                    </div>
+                                    <div class="row mt16">
+                                        <label for="auth_token" string="Auth Token" class="col-lg-3"/>
+                                        <field name="auth_token" password="True"/>
+                                    </div>
+                                    <div class="row mt16">
+                                        <label for="twilio_no" string="Twilio NO." class="col-lg-3"/>
+                                        <field name="twilio_no"/>
+                                    </div>
+                                </setting>
+
+                                <setting id="clicksendsms_credentials" invisible="gateway != 'clicksendsms'">
+                                    <div class="row mt16">
+                                        <label for="clicksend_username" string="Username" class="col-lg-3"/>
+                                        <field name="clicksend_username" />
+                                    </div>
+                                    <div class="row mt16">
+                                        <label for="click_send_api_key" string="API Key" class="col-lg-3"/>
+                                        <field name="click_send_api_key" password="True"/>
+                                    </div>
+                                    <div class="row mt16">
+                                        <label for="click_send_sender_no" string="Sender NO." class="col-lg-3"/>
+                                        <field name="click_send_sender_no"/>
+                                    </div>
+                                </setting>
+                            </block>
+                        </div>
+
+<!--                            <div class="o_setting_right_pane" attrs="{'invisible' : [('gateway', '!=', 'clicksendsms')]}">-->
+<!--                                <label for="clicksend_username"/>-->
+<!--                                <field name="clicksend_username" style="max-width : 70%; margin-left:17px"/>-->
+<!--                                <br/>-->
+<!--                                <label for="click_send_api_key" />-->
+<!--                                <field name="click_send_api_key"  password="True"-->
+<!--                                       style="max-width : 70%;margin-left:33px"/>-->
+<!--                                <br/>-->
+<!--                                <label for="click_send_sender_no"/>-->
+<!--                                <field name="click_send_sender_no" style="max-width : 70%;margin-left:10px"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+            </xpath>
+        </field>
+    </record>
+</odoo>

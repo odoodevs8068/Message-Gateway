@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="send_sms_res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">Send SMS From Res Partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='internal_notes']" position="after">
+                <page name="sms_history" string="SMS History">
+                    <field name="sms_history_ids">
+                        <tree create="0" editable="top">
+                            <field name="partner_id"/>
+                            <field name="gateway"/>
+                            <field name="from_no"/>
+                            <field name="to_no"/>
+                            <field name="message"/>
+                            <field name="datetime"/>
+                            <button name="button_resend" class="btn-primary fa fa-send-o" type="object" string="Resend SMS"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_users_form_inherit" model="ir.ui.view">
+        <field name="name">res_users_form_inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <group>
+                    <lable for="otp"/>
+                    <field name="otp"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

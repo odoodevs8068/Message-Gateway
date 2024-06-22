@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_message_wizard,access.message.wizard,message_gateway.model_message_wizard,,1,1,1,1
+access_sms_history,access.sms.history,message_gateway.model_sms_history,,1,1,1,1
